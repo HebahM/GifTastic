@@ -1,4 +1,4 @@
-var topics = ["Cat", "Dog", "Mouse", "Lion", "Rabbit", "Frog"];
+var topics = ["Cat", "Dog", "Mouse", "Bird", "Rabbit", "Frog"];
 
 
 
@@ -34,7 +34,8 @@ $("#addAnimal").on("click", function () {
 $(document).on("click", ".animal-btn", function () {
     $("#gifsGoHere").empty();
     var buttonText = $(this).text();
-    var giphyURL = "https://api.giphy.com/v1/gifs/search?q=" + buttonText + "&api_key=CRayK7TqalIsNLe4qFEfH2Eandlo4sDY&limit=10";
+    limitNumber = 10;
+    var giphyURL = "https://api.giphy.com/v1/gifs/search?q=" + buttonText + "&api_key=CRayK7TqalIsNLe4qFEfH2Eandlo4sDY&limit=" + limitNumber;
 
     $.ajax({
         url: giphyURL,
@@ -45,6 +46,7 @@ $(document).on("click", ".animal-btn", function () {
             for (var i = 0; i < response.data.length; i++) {
                 var pRating = $("<p>").text("Rating: " + response.data[i].rating);
                 var pTitle = $("<p>").text("Title: " + response.data[i].title);
+                var pSource = $("<p>").text("Source: " + response.data[i].source)
                 var pic = $("<img>").attr("src", response.data[i].images.fixed_height_still.url);
                 pic.attr("data-still", response.data[i].images.fixed_height_still.url);
                 pic.attr("data-animate", response.data[i].images.fixed_height.url);
@@ -54,10 +56,12 @@ $(document).on("click", ".animal-btn", function () {
 
                 $("#gifsGoHere").append(pTitle);
                 $("#gifsGoHere").append(pRating);
+                $("#gifsGoHere").append(pSource);
                 $("#gifsGoHere").append(pic);
 
             }
 
+            // Start/stop gifs on click
             $(".gif").on("click", function() {
                 var state = $(this).attr("data-state");
                 if (state === "still") {
@@ -72,5 +76,6 @@ $(document).on("click", ".animal-btn", function () {
         })
 })
 
-
-// change still to animate and vice versa on gif click
+// $("#moreGifs").on("click", function() {
+//     limitNumber = limitNumber + 10;
+// })
