@@ -3,7 +3,7 @@ body {
 }
 
 #main {
-    width: 80%;
+    width: 90%;
     margin: 30px auto;
 }
 /* .container {
@@ -13,6 +13,7 @@ body {
 
 #buttons {
     float: left;
+    display: block;
 }
 .animal-btn {
     margin-right: 10px;
@@ -20,4 +21,9 @@ body {
 }
 .card {
     float: right;
+    float: top;
+}
+#gifsGoHere {
+    display: block;
+    margin-top: 50px;
 }
