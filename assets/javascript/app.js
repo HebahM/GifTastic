@@ -34,7 +34,7 @@ $("#addAnimal").on("click", function () {
 $(document).on("click", ".animal-btn", function () {
     $("#gifsGoHere").empty();
     var buttonText = $(this).text();
-    var giphyURL = "https://api.giphy.com/v1/gifs/search?q=" + buttonText + "&api_key=CRayK7TqalIsNLe4qFEfH2Eandlo4sDY&limit=10";
+    var giphyURL = "http://api.giphy.com/v1/gifs/search?q=" + buttonText + "&api_key=CRayK7TqalIsNLe4qFEfH2Eandlo4sDY&limit=10";
 
     $.ajax({
         url: giphyURL,
@@ -45,10 +45,11 @@ $(document).on("click", ".animal-btn", function () {
             for (var i = 0; i < response.data.length; i++) {
                 var pRating = $("<p>").text("Rating: " + response.data[i].rating)
                 var pTitle = $("<p>").text("Title: " + response.data[i].title)
-                var pic = $("<img>").attr("src", response.data[i].images.fixed_height_still.url)
-                $("#gifsGoHere").append(pRating);
+                var pic = $("<img>")
+                pic.attr("src", response.data[i].images.fixed_height.url)
                 $("#gifsGoHere").append(pTitle);
-                $("gifsGoHere").append(pic);
+                $("#gifsGoHere").append(pRating);
+                $("#gifsGoHere").append(pic);
             }
         })
 })
