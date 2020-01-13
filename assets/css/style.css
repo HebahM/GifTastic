@@ -1,15 +1,18 @@
 body {
-    background-image: url(../images/white-waves.png);
+    background-image: url(../images/morocco-blue.png);
 }
 
 #main {
-    width: 90%;
-    margin: 30px auto;
-}
-/* .container {
+    width: 85%;
+    margin: 50px auto;
+    padding-top: 30px;
+    min-height: 700px;
     background-image: url(../images/white-waves.png);
+}
+.container-md {
+    
 
-} */
+}
 
 #buttons {
     float: left;
@@ -17,6 +20,7 @@ body {
 }
 .animal-btn {
     margin-right: 10px;
+    margin-top: 10px;
 
 }
 .card {
